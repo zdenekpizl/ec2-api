@@ -1,4 +1,5 @@
 %global pypi_name ec2-api
+%define gdc_version .gdc1
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -7,12 +8,12 @@
 
 Name:           openstack-%{pypi_name}
 Version:        2.0.0
-Release:        2%{?dist}
+Release:        2%{?gdc_version}%{?dist}
 Summary:        OpenStack Ec2api Service
 
 License:        ASL 2.0
 URL:            https://launchpad.net/ec2-api
-Source0:        https://pypi.io/packages/source/e/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        openstack-ec2-api.tar.gz
 Source1:        openstack-ec2-api.service
 Source2:        openstack-ec2-api-metadata.service
 Source3:        openstack-ec2-api-s3.service
@@ -137,7 +138,7 @@ BuildRequires:  python-sphinx
 Documentation for OpenStack EC2 API
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n openstack-%{pypi_name}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
