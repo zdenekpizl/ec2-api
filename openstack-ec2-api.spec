@@ -1,5 +1,5 @@
 %global pypi_name ec2-api
-%define gdc_version .gdc1
+%define gdc_version .gdc2
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -249,6 +249,9 @@ exit 0
 
 
 %changelog
+* Thu Oct 27 2016 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc2
+- EC2API policy authorization
+
 * Thu Jul  7 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 2.0.0-2
 - Fix eventlet min requirements
 
