@@ -192,6 +192,8 @@ class InvalidInput(EC2InvalidException):
 class AuthFailure(EC2InvalidException):
     msg_fmt = _('Not authorized.')
 
+class PolicyNotAuthorized(AuthFailure):
+    msg_fmt = _("Policy doesn't allow %(action)s to be performed.")
 
 class ValidationError(EC2InvalidException):
     msg_fmt = _("The input fails to satisfy the constraints "

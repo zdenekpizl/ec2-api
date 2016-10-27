@@ -239,6 +239,7 @@ class EC2KeystoneAuth(wsgi.Middleware):
                                       request_id=request_id,
                                       user_name=auth_ref.username,
                                       project_name=auth_ref.project_name,
+                                      roles=auth_ref.role_names,
                                       remote_address=remote_address,
                                       session=session,
                                       api_version=req.params.get('Version'))

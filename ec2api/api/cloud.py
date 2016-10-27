@@ -46,9 +46,14 @@ from ec2api.api import vpn_connection
 from ec2api.api import vpn_gateway
 from ec2api import exception
 
+import ec2api.policy
+
 CONF = cfg.CONF
 LOG = logging.getLogger(__name__)
 
+def check_policy(context, action, scope='ec2'):
+    _action = '%s:%s' % (scope, action)
+    ec2api.policy.enforce(context, _action)
 
 def module_and_param_types(module, *args, **kwargs):
     """Decorator to check types and call function."""
@@ -60,6 +65,7 @@ def module_and_param_types(module, *args, **kwargs):
         def func_wrapped(*args, **kwargs):
             impl_func = getattr(module, func.__name__)
             context = args[1]
+            check_policy(context, func.__name__, 'ec2')
             params = collections.OrderedDict(six.moves.zip(
                 func.__code__.co_varnames[2:], param_types))
             param_num = 0
