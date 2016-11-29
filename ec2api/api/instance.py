@@ -155,10 +155,13 @@ def run_instances(context, image_id, min_count, max_count,
                 **extra_params)
             cleaner.addCleanup(nova.servers.delete, os_instance.id)
 
+            os_instance = nova.servers.get(os_instance.id)
             instance = {'os_id': os_instance.id,
                         'vpc_id': vpc_id,
                         'reservation_id': ec2_reservation_id,
-                        'launch_index': launch_index}
+                        'launch_index': launch_index,
+                        'ec2_id': getattr(os_instance, 'OS-EXT-SRV-ATTR:instance_name')}
+
             if client_token:
                 instance['client_token'] = client_token
             if disable_api_termination:
@@ -1476,6 +1479,9 @@ def _auto_create_instance_extension(context, instance, os_instance=None):
         instance['reservation_id'] = _generate_reservation_id()
         instance['launch_index'] = 0
 
+    if hasattr(os_instance, 'OS-EXT-SRV-ATTR:instance_name'):
+        instance['ec2_id'] = getattr(os_instance,
+                                     'OS-EXT-SRV-ATTR:instance_name')
 
 ec2utils.register_auto_create_db_item_extension(
     'i', _auto_create_instance_extension)
