@@ -1,5 +1,5 @@
 %global pypi_name ec2-api
-%define gdc_version .gdc3
+%define gdc_version .gdc4
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -249,6 +249,9 @@ exit 0
 
 
 %changelog
+* Thu jan 19 2017 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc4
+- fix euca-revoke ineffectivnes
+
 * Tue Nov 29 2016 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc3
 - fix EC2 ID during instance deploy via EC2 and nova
 

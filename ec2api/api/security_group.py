@@ -569,11 +569,12 @@ class SecurityGroupEngineNova(object):
         os_security_group = nova.security_groups.get(os_id)
         os_rules = os_security_group.rules
         neutron_rules = []
+        sg_list = nova.security_groups.list()
         for os_rule in os_rules:
             neutron_rules.append(
                 self.convert_rule_to_neutron(context,
                                              os_rule,
-                                             nova.security_groups.list()))
+                                             sg_list))
         return neutron_rules
 
     def delete_os_group_rule(self, context, os_id):
