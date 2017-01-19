@@ -249,7 +249,7 @@ exit 0
 
 
 %changelog
-* Thu jan 19 2017 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc4
+* Thu Jan 19 2017 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc4
 - fix euca-revoke ineffectivnes
 
 * Tue Nov 29 2016 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc3
