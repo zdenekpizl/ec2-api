@@ -1,0 +1,7 @@
+/var/log/ec2api/*.log {
+    rotate 7
+    missingok
+    compress
+    nodelaycompress
+    size 10M
+}

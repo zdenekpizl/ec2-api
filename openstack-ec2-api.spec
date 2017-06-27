@@ -1,5 +1,5 @@
 %global pypi_name ec2-api
-%define gdc_version .gdc4
+%define gdc_version .gdc5
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -20,6 +20,7 @@ Source3:        openstack-ec2-api-s3.service
 Source4:        openstack-ec2-api-manage.service
 Source5:        ec2api.conf.sample
 Source6:        policy.json
+Source7:        openstack-ec2-api.logrotate
 
 BuildArch:      noarch
 
@@ -191,6 +192,7 @@ mkdir -p %{buildroot}/var/log/ec2api/
 install -p -D -m 640 etc/ec2api/api-paste.ini %{buildroot}%{_sysconfdir}/ec2api/api-paste.ini
 install -p -D -m 640 %{SOURCE5} %{buildroot}%{_sysconfdir}/ec2api/ec2api.conf
 install -p -D -m 640 %{SOURCE6} %{buildroot}%{_sysconfdir}/ec2api/policy.json
+install -p -D -m 640 %{SOURCE7} %{buildroot}%{_sysconfdir}/logrotate.d/openstack-ec2api
 
 # Install services
 install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/openstack-ec2-api.service
@@ -249,6 +251,9 @@ exit 0
 
 
 %changelog
+* Tue Jun 27 2017 Zdenek Pizl <zdenek.pizl@gooddata.com> - 2.0.0-2.gdc5
+- logrotate rule aded
+
 * Thu Jan 19 2017 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc4
 - fix euca-revoke ineffectivnes
 
