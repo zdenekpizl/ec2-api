@@ -1,5 +1,5 @@
 %global pypi_name ec2-api
-%define gdc_version .gdc5
+%define gdc_version .gdc6
 
 %if 0%{?fedora}
 %global with_python3 1
@@ -252,8 +252,11 @@ exit 0
 
 
 %changelog
+* Wed Jun 28 2017 Zdenek Pizl <zdenek.pizl@gooddata.com> - 2.0.0-2.gdc6
+- logrotate's postrotate snippet must be defined to recreate ec2api.log
+
 * Tue Jun 27 2017 Zdenek Pizl <zdenek.pizl@gooddata.com> - 2.0.0-2.gdc5
-- logrotate rule aded
+- logrotate rule added
 
 * Thu Jan 19 2017 Tomas Dubec <tomas.dubec@gooddata.com> - 2.0.0-2.gdc4
 - fix euca-revoke ineffectivnes
