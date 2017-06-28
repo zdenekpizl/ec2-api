@@ -225,9 +225,9 @@ exit 0
 %files
 %{_bindir}/%{pypi_name}*
 %dir %attr(0750, root, ec2api) %{_sysconfdir}/ec2api
-%attr(0644, root, ec2api) %{_sysconfdir}/ec2api/api-paste.ini
-%attr(0644, root, ec2api) %{_sysconfdir}/ec2api/ec2api.conf
-%attr(0644, root, ec2api) %{_sysconfdir}/ec2api/policy.json
+%config %attr(0644, root, ec2api) %{_sysconfdir}/ec2api/api-paste.ini
+%config %attr(0644, root, ec2api) %{_sysconfdir}/ec2api/ec2api.conf
+%config %attr(0644, root, ec2api) %{_sysconfdir}/ec2api/policy.json
 %attr(0644, root, root) %{_sysconfdir}/logrotate.d/openstack-ec2api
 %{_unitdir}/openstack-ec2-api.service
 %{_unitdir}/openstack-ec2-api-metadata.service
